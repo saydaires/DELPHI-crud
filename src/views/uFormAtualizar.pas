@@ -1,0 +1,92 @@
+unit uFormAtualizar;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
+  Vcl.Samples.Spin, Vcl.ComCtrls,
+  uVerificacao,
+  uProdutoController,
+  uProduto;
+
+type
+  TFormAtualizar = class(TForm)
+    PanelCadastro: TPanel;
+    btnAtualizar: TButton;
+    btnLimpar: TButton;
+    btnSair: TButton;
+    Label3: TLabel;
+    SpinPreco: TSpinEdit;
+    EditQuantidade: TEdit;
+    Label5: TLabel;
+    EditCodBarras: TEdit;
+    Label1: TLabel;
+    procedure btnAtualizarClick(Sender: TObject);
+    procedure btnLimparClick(Sender: TObject);
+    procedure btnSairClick(Sender: TObject);
+  private
+    pageControl: TPageControl;
+    function verificarCamposVazios(CodBarras: String; Preco: String; Quantidade: String): Boolean;
+  public
+    procedure setPageControl(pageControlPai: TPageControl);
+  end;
+
+var
+  FormAtualizar: TFormAtualizar;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFormAtualizar.btnAtualizarClick(Sender: TObject);
+var verificador: TVerificacao;
+var controller: TProdutoController;
+var produto: TProduto;
+begin
+    if not (verificarCamposVazios(EditCodBarras.Text, SpinPreco.Text, EditQuantidade.Text))
+    then
+        if verificador.verificarCamposNumericos(SpinPreco.Text, EditQuantidade.Text) then
+        begin
+            produto := TProduto.Create;
+            produto.CodigoBarras := EditCodBarras.Text;
+            produto.Preco := StrToFloat(SpinPreco.Text);
+            produto.Quantidade := StrToInt(EditQuantidade.Text);
+            if controller.atualizar(produto) then
+                ShowMessage('PRODUTO ATUALIZADO COM SUCESSO!')
+            else
+                ShowMessage('ERRO AO ATUALIZAR PRODUTO!');
+        end
+        else
+            ShowMessage('CAMPOS NUMÉRICOS APRESENTAM INVALIDEZ!')
+    else
+        ShowMessage('EXISTEM CAMPOS VAZIOS!');
+end;
+
+procedure TFormAtualizar.btnLimparClick(Sender: TObject);
+begin
+    EditCodBarras.Clear;
+    SpinPreco.Clear;
+    EditQuantidade.Clear;
+end;
+
+procedure TFormAtualizar.btnSairClick(Sender: TObject);
+begin
+    Self.Close;
+    pageControl.ActivePage.Free;
+end;
+
+function TFormAtualizar.verificarCamposVazios(CodBarras: string; Preco: string; Quantidade: string): Boolean;
+begin
+    if (CodBarras.IsEmpty) or (Preco.IsEmpty) or (Quantidade.IsEmpty) then
+        Result := True
+    else
+        Result := False;
+end;
+
+procedure TFormAtualizar.setPageControl(pageControlPai: TPageControl);
+begin
+    Self.pageControl := pageControlPai;
+end;
+
+end.

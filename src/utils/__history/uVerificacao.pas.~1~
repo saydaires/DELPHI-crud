@@ -1,0 +1,87 @@
+unit uVerificacao;
+
+interface
+uses
+    System.SysUtils,
+    System.Variants,
+    System.Classes;
+
+type
+    TVerificacao = class
+        private
+            function verificarTamanhoValido(codigoBarras: String): Boolean;
+            function verificarDigitosValidos(codigoBarras: String): Boolean;
+        public
+            function verificarCamposVazios(campo1: String; campo2: String; campo3: String;
+            campo4: String; campo5: String; campo6: String): Boolean;
+            function verificarCodBarras(codigoBarras: String): Boolean;
+    end;
+
+implementation
+function TVerificacao.verificarCamposVazios(campo1: string; campo2: string; campo3: string; campo4: string; campo5: string; campo6: string): Boolean;
+begin
+    if
+    campo1.IsEmpty or
+    campo2.IsEmpty or
+    campo3.IsEmpty or
+    campo4.IsEmpty or
+    campo5.IsEmpty or
+    campo6.IsEmpty
+    then
+        Result := True
+    else
+        Result := False;
+end;
+
+function TVerificacao.verificarCodBarras(codigoBarras: string): Boolean;
+begin
+    if verificarTamanhoValido(codigoBarras) then
+        if verificarDigitosValidos(codigoBarras) then
+        begin
+            Result := True;
+            Exit;
+        end;
+    Result := False;
+end;
+
+function TVerificacao.verificarTamanhoValido(codigoBarras: String):Boolean;
+begin
+    if codigoBarras.Length in [8..14] then
+        Result := True
+    else
+        Result := False;
+end;
+
+function TVerificacao.verificarDigitosValidos(codigoBarras: string): Boolean;
+  var indice: Integer;
+  var acumulador: Integer;
+  var peso: Integer;
+  var digitoAtual: Integer;
+  var ultimoDigito: Integer;
+  var primeiroResto: Integer;
+  var digitoVerificador: Integer;
+begin
+    acumulador := 0;
+    peso := 3;
+
+    for indice := codigoBarras.Length - 2 downto 0 do
+    begin
+        digitoAtual := StrToInt(codigoBarras.Chars[indice]);
+        acumulador := acumulador + digitoAtual * peso;
+        if peso = 3 then
+            peso := 1
+        else
+            peso := 3;
+    end;
+
+    ultimoDigito := StrToInt(codigoBarras.Chars[codigoBarras.Length - 1]);
+    primeiroResto := acumulador mod 10;
+    digitoVerificador := (10 - primeiroResto) mod 10;
+
+    if ultimoDigito = digitoVerificador then
+        Result := True
+    else
+        Result := False;
+end;
+
+end.

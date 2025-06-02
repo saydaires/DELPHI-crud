@@ -1,0 +1,105 @@
+unit uFormCadastro;
+
+interface
+
+uses
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Vcl.StdCtrls,
+  Vcl.Samples.Spin,
+  Vcl.ExtCtrls,
+  Vcl.ComCtrls,
+  uVerificacao,
+  uProdutoController,
+  uProduto;
+
+type
+  TFormCadastro = class(TForm)
+    PanelCadastro: TPanel;
+    EditCodBarras: TEdit;
+    Label1: TLabel;
+    EditNome: TEdit;
+    Label2: TLabel;
+    EditDescricao: TEdit;
+    Label3: TLabel;
+    SpinPreco: TSpinEdit;
+    Label4: TLabel;
+    EditQuantidade: TEdit;
+    Label5: TLabel;
+    EditCategoria: TEdit;
+    Label6: TLabel;
+    btnSalvar: TButton;
+    btnLimpar: TButton;
+    btnSair: TButton;
+    procedure btnSalvarClick(Sender: TObject);
+    procedure btnSairClick(Sender: TObject);
+    procedure btnLimparClick(Sender: TObject);
+  private
+      pageControl: TPageControl;
+  public
+      procedure setPageControl(pageControlDono: TPageControl);
+  end;
+
+var
+  FormCadastro: TFormCadastro;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFormCadastro.btnLimparClick(Sender: TObject);
+begin
+    EditCodBarras.Clear;
+    EditNome.Clear;
+    EditDescricao.Clear;
+    SpinPreco.Clear;
+    EditQuantidade.Clear;
+    EditCategoria.Clear;
+end;
+
+procedure TFormCadastro.btnSairClick(Sender: TObject);
+begin
+    Self.Close;
+    pageControl.ActivePage.Free;
+end;
+
+procedure TFormCadastro.btnSalvarClick(Sender: TObject);
+var verificador: TVerificacao;
+var controller: TProdutoController;
+var produto: TProduto;
+begin
+    if not (verificador.verificarCamposVazios(EditCodBarras.Text, EditNome.Text,
+    EditDescricao.Text, SpinPreco.Text, EditQuantidade.Text, EditCategoria.Text))
+    then
+        if verificador.verificarCamposNumericos(SpinPreco.Text, EditQuantidade.Text) then
+        begin
+            produto := TProduto.Create;
+            produto.CodigoBarras := EditCodBarras.Text;
+            produto.Nome := EditNome.Text;
+            produto.Descricao := EditDescricao.Text;
+            produto.Preco := StrToFloat(SpinPreco.Text);
+            produto.Quantidade := StrToInt(EditQuantidade.Text);
+            produto.Categoria := EditCategoria.Text;
+            if controller.cadastrar(produto) then
+                ShowMessage('PRODUTO CADASTRADO COM SUCESSO!')
+            else
+                ShowMessage('ERRO AO CADASTRAR PRODUTO!');
+        end
+        else
+            ShowMessage('CAMPOS NUMÉRICOS APRESENTAM INVALIDEZ!')
+    else
+        ShowMessage('EXISTEM CAMPOS VAZIOS!');
+end;
+
+procedure TFormCadastro.setPageControl(pageControlDono: TPageControl);
+begin
+    Self.pageControl := pageControlDono;
+end;
+end.

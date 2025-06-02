@@ -1,0 +1,35 @@
+unit uFormAtualizar;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
+  Vcl.Samples.Spin;
+
+type
+  TFormAtualizar = class(TForm)
+    PanelCadastro: TPanel;
+    btnAtualizar: TButton;
+    btnLimpar: TButton;
+    btnSair: TButton;
+    Label3: TLabel;
+    SpinPreco: TSpinEdit;
+    EditQuantidade: TEdit;
+    Label5: TLabel;
+    EditCodBarras: TEdit;
+    Label1: TLabel;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FormAtualizar: TFormAtualizar;
+
+implementation
+
+{$R *.dfm}
+
+end.

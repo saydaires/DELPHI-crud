@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2025/05/30 07:58:57.000.208,=C:\Users\aires\OneDrive\Imagens\Documentos\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2025/06/02 10:59:05.541,=C:\Users\aires\OneDrive\Imagens\Documentos\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2025/06/02 10:59:21.343,=C:\Users\aires\OneDrive\Imagens\Documentos\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>2025/06/02 11:01:47.971,C:\Users\aires\OneDrive\Área de Trabalho\Sayd\src\configs\udmConexaoBancoDados.pas=C:\Users\aires\OneDrive\Imagens\Documentos\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>2025/06/02 11:01:47.971,C:\Users\aires\OneDrive\Área de Trabalho\Sayd\src\configs\udmConexaoBancoDados.dfm=C:\Users\aires\OneDrive\Imagens\Documentos\Embarcadero\Studio\Projects\Unit3.dfm</Transaction>
+    <Transaction>2025/06/02 11:02:16.734,=C:\Users\aires\OneDrive\Imagens\Documentos\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2025/06/02 11:02:23.349,=C:\Users\aires\OneDrive\Imagens\Documentos\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>2025/06/02 11:07:04.807,C:\Users\aires\OneDrive\Área de Trabalho\Sayd\src\models\uProduto.pas=C:\Users\aires\OneDrive\Imagens\Documentos\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2025/06/02 11:07:36.634,C:\Users\aires\OneDrive\Área de Trabalho\Sayd\crud_project.dproj=C:\Users\aires\OneDrive\Imagens\Documentos\Embarcadero\Studio\Projects\Project3.dproj</Transaction>
+  </Transactions>
+</BorlandProject>

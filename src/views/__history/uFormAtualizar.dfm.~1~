@@ -1,0 +1,93 @@
+object FormAtualizar: TFormAtualizar
+  Left = 0
+  Top = 0
+  Caption = 'Atualizar'
+  ClientHeight = 441
+  ClientWidth = 624
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  TextHeight = 15
+  object Label3: TLabel
+    Left = 240
+    Top = 190
+    Width = 37
+    Height = 15
+    Caption = 'PRE'#199'O'
+  end
+  object Label5: TLabel
+    Left = 240
+    Top = 262
+    Width = 73
+    Height = 15
+    Caption = 'QUANTIDADE'
+  end
+  object Label1: TLabel
+    Left = 240
+    Top = 126
+    Width = 108
+    Height = 15
+    Caption = 'CODIGO DE BARRAS'
+  end
+  object PanelCadastro: TPanel
+    Left = 0
+    Top = 0
+    Width = 145
+    Height = 441
+    Align = alLeft
+    TabOrder = 0
+    object btnAtualizar: TButton
+      Left = 24
+      Top = 19
+      Width = 97
+      Height = 87
+      Caption = 'ATUALIZAR'
+      TabOrder = 0
+    end
+    object btnLimpar: TButton
+      Left = 24
+      Top = 147
+      Width = 97
+      Height = 95
+      Caption = 'LIMPAR CAMPOS'
+      TabOrder = 1
+    end
+    object btnSair: TButton
+      Left = 24
+      Top = 326
+      Width = 97
+      Height = 95
+      Caption = 'SAIR'
+      TabOrder = 2
+    end
+  end
+  object SpinPreco: TSpinEdit
+    Left = 240
+    Top = 211
+    Width = 121
+    Height = 24
+    MaxValue = 0
+    MinValue = 0
+    TabOrder = 1
+    Value = 0
+  end
+  object EditQuantidade: TEdit
+    Left = 240
+    Top = 283
+    Width = 217
+    Height = 23
+    NumbersOnly = True
+    TabOrder = 2
+  end
+  object EditCodBarras: TEdit
+    Left = 240
+    Top = 147
+    Width = 217
+    Height = 23
+    NumbersOnly = True
+    TabOrder = 3
+  end
+end

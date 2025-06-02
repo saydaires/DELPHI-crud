@@ -1,0 +1,37 @@
+unit uFormPrincipal;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.StdCtrls, Vcl.Grids,
+  Vcl.DBGrids, Vcl.ExtCtrls, Vcl.ComCtrls;
+
+type
+  TFormPrincipal = class(TForm)
+    PageControl: TPageControl;
+    TabMenuPrincipal: TTabSheet;
+    PanelMenuPrincipal: TPanel;
+    DBGrid1: TDBGrid;
+    EditCodBarras: TEdit;
+    btnListar: TButton;
+    btnBuscar: TButton;
+    Label1: TLabel;
+    btnNovo: TButton;
+    btnAtualizar: TButton;
+    btnDeletar: TButton;
+    btnSair: TButton;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FormPrincipal: TFormPrincipal;
+
+implementation
+
+{$R *.dfm}
+
+end.
